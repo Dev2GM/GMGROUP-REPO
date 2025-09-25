@@ -1,0 +1,203 @@
+
+
+version: '3.8'
+services:
+  api-gateway:
+    build: ../services/api-gateway
+    ports:
+      - "3000:3000"
+    env_file:
+      - ../services/api-gateway/.env
+    depends_on:
+      - gmgroup-auth-db
+      - gmgroup-autodata-db
+      - gmgroup-conocimiento-db
+      - gmgroup-corredores-db
+      - gmgroup-eventos-db
+      - gmgroup-personas-db
+      - gmgroup-polizas-db
+      - gmgroup-tareas-db
+      - gmgroup-365-seguros
+      - gmgroup-pinares-front
+  gmgroup-365-seguros:
+    build: ../services/gmgroup-365-seguros
+    ports:
+      - "5173:5173"
+    env_file:
+      - ../services/gmgroup-365-seguros/.env
+  gmgroup-pinares-front:
+    build: ../services/gmgroup-pinares-front
+    ports:
+      - "5174:5173"
+    env_file:
+      - ../services/gmgroup-pinares-front/.env
+  gmgroup-auth-service:
+    build: ../services/gmgroup-auth-service
+    ports:
+      - "4001:4001"
+    env_file:
+      - ../services/gmgroup-auth-service/.env
+    depends_on:
+      - gmgroup-auth-db
+  gmgroup-auth-db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: gm_auth
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ""
+    volumes:
+      - ../services/gmgroup-auth-service/database.sql:/docker-entrypoint-initdb.d/init.sql
+      - gmgroup-auth-data:/var/lib/mysql
+    ports:
+      - "33061:3306"
+  gmgroup-autodata-service:
+    build: ../services/gmgroup-autodata-service
+    ports:
+      - "4002:4002"
+    env_file:
+      - ../services/gmgroup-autodata-service/.env
+    depends_on:
+      - gmgroup-autodata-db
+  gmgroup-autodata-db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: gm_autodata
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ""
+    volumes:
+      - ../services/gmgroup-autodata-service/database.sql:/docker-entrypoint-initdb.d/init.sql
+      - gmgroup-autodata-data:/var/lib/mysql
+    ports:
+      - "33062:3306"
+  gmgroup-conocimiento-service:
+    build: ../services/gmgroup-conocimiento-service
+    ports:
+      - "5000:5000"
+    env_file:
+      - ../services/gmgroup-conocimiento-service/.env
+    depends_on:
+      - gmgroup-conocimiento-db
+  gmgroup-conocimiento-db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: gm_conocimiento
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ""
+    volumes:
+      - ../services/gmgroup-conocimiento-service/database.sql:/docker-entrypoint-initdb.d/init.sql
+      - gmgroup-conocimiento-data:/var/lib/mysql
+    ports:
+      - "33063:3306"
+  gmgroup-corredores-service:
+    build: ../services/gmgroup-corredores-service
+    ports:
+      - "4003:4003"
+    env_file:
+      - ../services/gmgroup-corredores-service/.env
+    depends_on:
+      - gmgroup-corredores-db
+  gmgroup-corredores-db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: gm_corredores
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ""
+    volumes:
+      - ../services/gmgroup-corredores-service/database.sql:/docker-entrypoint-initdb.d/init.sql
+      - gmgroup-corredores-data:/var/lib/mysql
+    ports:
+      - "33064:3306"
+  gmgroup-eventos-service:
+    build: ../services/gmgroup-eventos-service
+    ports:
+      - "4004:4004"
+    env_file:
+      - ../services/gmgroup-eventos-service/.env
+    depends_on:
+      - gmgroup-eventos-db
+  gmgroup-eventos-db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: gm_eventos
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ""
+    volumes:
+      - ../services/gmgroup-eventos-service/database.sql:/docker-entrypoint-initdb.d/init.sql
+      - gmgroup-eventos-data:/var/lib/mysql
+    ports:
+      - "33065:3306"
+  gmgroup-personas-service:
+    build: ../services/gmgroup-personas-service
+    ports:
+      - "4005:4005"
+    env_file:
+      - ../services/gmgroup-personas-service/.env
+    depends_on:
+      - gmgroup-personas-db
+  gmgroup-personas-db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: gm_personas
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ""
+    volumes:
+      - ../services/gmgroup-personas-service/database.sql:/docker-entrypoint-initdb.d/init.sql
+      - gmgroup-personas-data:/var/lib/mysql
+    ports:
+      - "33066:3306"
+  gmgroup-polizas-service:
+    build: ../services/gmgroup-polizas-service
+    ports:
+      - "4006:4006"
+    env_file:
+      - ../services/gmgroup-polizas-service/.env
+    depends_on:
+      - gmgroup-polizas-db
+  gmgroup-polizas-db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: gm_polizas
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ""
+    volumes:
+      - ../services/gmgroup-polizas-service/database.sql:/docker-entrypoint-initdb.d/init.sql
+      - gmgroup-polizas-data:/var/lib/mysql
+    ports:
+      - "33067:3306"
+  gmgroup-tareas-service:
+    build: ../services/gmgroup-tareas-service
+    ports:
+      - "4007:4007"
+    env_file:
+      - ../services/gmgroup-tareas-service/.env
+    depends_on:
+      - gmgroup-tareas-db
+  gmgroup-tareas-db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: gm_tareas
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ""
+    volumes:
+      - ../services/gmgroup-tareas-service/database.sql:/docker-entrypoint-initdb.d/init.sql
+      - gmgroup-tareas-data:/var/lib/mysql
+    ports:
+      - "33068:3306"
+
+volumes:
+  gmgroup-auth-data:
+  gmgroup-autodata-data:
+  gmgroup-conocimiento-data:
+  gmgroup-corredores-data:
+  gmgroup-eventos-data:
+  gmgroup-personas-data:
+  gmgroup-polizas-data:
+  gmgroup-tareas-data:
