@@ -1,4 +1,15 @@
+import { useNavigate } from "react-router-dom";
+
 function Tabla({ results }: { results: any[] }) {
+  const navigate = useNavigate();
+
+  // Para redirigir a la página de detalles del cliente
+  const handleDoubleClick = (person: any) => {
+    navigate(`../paginas/detalles_cliente/${person.id}`, {
+      state: { clientData: person },
+    });
+  };
+
   return (
     <div className="bg-gray-50 rounded-xl p-6 mb-8">
       <h3 className="text-lg font-semibold mb-4">Resultados de búsqueda:</h3>
@@ -27,20 +38,22 @@ function Tabla({ results }: { results: any[] }) {
             {results.map((person, index) => (
               <tr
                 key={index}
-                className="border-t border-gray-200 hover:bg-gray-50"
+                className="border-t border-gray-200 hover:bg-gray-50 cursor-pointer transition-colors duration-200 hover:bg-blue-50"
+                onDoubleClick={() => handleDoubleClick(person)}
+                title="Doble clic para ver detalles"
               >
                 <td className="px-6 py-4 text-sm text-gris capitalize">
-                  {person.apellidos}
+                  {person.apellido}
                 </td>
-                <td className="px-6 py-4 text-sm text-gris capitalize">{person.nombres}</td>
-                <td className="px-6 py-4 text-sm text-gris">
-                  {person.documento}
+                <td className="px-6 py-4 text-sm text-gris capitalize">
+                  {person.nombre}
                 </td>
+                <td className="px-6 py-4 text-sm text-gris">{person.cedula}</td>
                 <td className="px-6 py-4 text-sm text-gris">
                   {person.telefono}
                 </td>
                 <td className="px-6 py-4 text-sm text-gris">
-                  {person.es_cliente ? 'Cliente' : 'No es cliente'}
+                  {person.es_cliente ? "Cliente" : "No es cliente"}
                 </td>
               </tr>
             ))}
