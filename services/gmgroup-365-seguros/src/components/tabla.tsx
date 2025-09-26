@@ -38,17 +38,17 @@ function Tabla({ results }: { results: any[] }) {
             {results.map((person, index) => (
               <tr
                 key={index}
-                className="border-t border-gray-200 hover:bg-gray-50 cursor-pointer transition-colors duration-200 hover:bg-blue-50"
+                className="border-t border-gray-200 cursor-pointer transition-colors duration-200 hover:bg-blue-50"
                 onDoubleClick={() => handleDoubleClick(person)}
                 title="Doble clic para ver detalles"
               >
                 <td className="px-6 py-4 text-sm text-gris capitalize">
-                  {person.apellido}
+                  {person.apellidos}
                 </td>
                 <td className="px-6 py-4 text-sm text-gris capitalize">
-                  {person.nombre}
+                  {person.nombres}
                 </td>
-                <td className="px-6 py-4 text-sm text-gris">{person.cedula}</td>
+                <td className="px-6 py-4 text-sm text-gris">{person.documento}</td>
                 <td className="px-6 py-4 text-sm text-gris">
                   {person.telefono}
                 </td>
