@@ -11,7 +11,7 @@ const schema = Joi.object({
 });
 
 exports.getAll = (req, res) => {
-  Corredor.getAll((err, result) => {
+  Corredor.getAll(req.user.id_empresa, (err, result) => {
     if (err) return res.status(500).json({ error: err.message });
     res.status(200).json(result);
   });

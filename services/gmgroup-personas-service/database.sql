@@ -54,6 +54,7 @@ CREATE TABLE IF NOT EXISTS Personas (
   fecha_nacimiento DATE,
   foto VARCHAR(255) NULL,
   id_corredor INT NULL,
+  id_persona INT NULL,
   id_ciudad INT NULL,
   es_cliente BOOLEAN,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -63,8 +64,20 @@ CREATE TABLE IF NOT EXISTS Personas (
   -- FOREIGN KEY (id_corredor) REFERENCES corredores(id) ON DELETE SET NULL
 );
 
-ALTER TABLE Personas
-ADD COLUMN id_usuario INT NULL AFTER id_ciudad;
+
+-- ======================
+-- TABLA PROSPECCION
+-- ======================
+CREATE TABLE IF NOT EXISTS Prospeccion (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  id_persona INT NOT NULL,
+  estado ENUM('asignado','primer_llamado','seguimiento','contrata','no_contrata') NOT NULL,
+  fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  fecha_update TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  id_creador INT NOT NULL,
+  id_usuario INT NOT NULL,
+  FOREIGN KEY (id_persona) REFERENCES Personas(id) ON DELETE CASCADE
+);
 
 
 

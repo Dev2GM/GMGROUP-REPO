@@ -7,6 +7,7 @@ import {
   Calendar,
   Table,
   MessageCircle,
+  Briefcase
 } from "lucide-react";
 
 const items = [
@@ -44,6 +45,11 @@ const items = [
     path: "/kanban",
     icon: <Table size={20} />,
     label: "Kanban",
+  },
+  {
+    path: "/prospeccion-terceros",
+    icon: <Briefcase size={20} />,
+    label: "Prospección de terceros",
   },
   {
     path: "/nucleo_conocimiento",

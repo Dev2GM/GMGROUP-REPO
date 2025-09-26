@@ -1,7 +1,7 @@
 const db = require('../config/db');
 
 const Corredor = {
-  getAll: cb => db.query('SELECT * FROM corredores', cb),
+  getAll: (id_empresa, cb) => db.query('SELECT * FROM corredores WHERE id_empresa = ?', [id_empresa], cb),
 
   getById: (id, cb) =>
     db.query('SELECT * FROM corredores WHERE id = ?', [id], cb),

@@ -35,4 +35,22 @@ const getUsersController = async (req, res) => {
   }
 };
 
-module.exports = {getUsersController}
+const getUsersBatchController = async (req, res) => {
+  try {
+    const { ids } = req.body;
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return res.status(400).json({ error: 'Debes enviar un array de ids' });
+    }
+    // Obtener usuarios por id
+    const db = require('../config/db');
+    const [rows] = await db.query(
+      `SELECT id, nombres, apellidos, username FROM usuarios WHERE id IN (${ids.map(() => '?').join(',')})`,
+      ids
+    );
+    res.json(rows);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+module.exports = { getUsersController, getUsersBatchController };

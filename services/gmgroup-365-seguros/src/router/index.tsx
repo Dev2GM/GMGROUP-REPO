@@ -9,6 +9,7 @@ import CalendarInterface from "@/pages/Calendario";
 import NucleoConocimiento from "@/pages/NucleoConocimiento";
 import PreguntasFrecuentes from "@/pages/PreguntasFrecuentes";
 import Kanban from "@/pages/Kanban";
+import ProspeccionTerceros from "@/pages/ProspeccionTerceros";
 import ConocimientoBot from "@/pages/ConocimientoBot";
 import ManualesMateriales from "@/pages/ManualesMateriales";
 
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: "kanban",
         element: <Kanban />,
+      },
+      {
+        path: "prospeccion-terceros",
+        element: <ProspeccionTerceros />,
       },
       {
         path: "chat",

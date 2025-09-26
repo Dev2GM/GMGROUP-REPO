@@ -17,6 +17,7 @@ app.use("/api/ramos", createProxyMiddleware({ target: "http://localhost:3002/api
 
 app.use("/api/personas", createProxyMiddleware({ target: "http://localhost:3003/api/personas", changeOrigin: true }));
 app.use("/api/location", createProxyMiddleware({ target: "http://localhost:3003/api/location", changeOrigin: true }));
+app.use("/api/prospeccion", createProxyMiddleware({ target: "http://localhost:3003/api/prospeccion", changeOrigin: true }));
 
 app.use("/api/datos-monetarios", createProxyMiddleware({ target: "http://localhost:3004/api/datos-monetarios", changeOrigin: true }));
 app.use("/api/polizas", createProxyMiddleware({ target: "http://localhost:3004/api/polizas", changeOrigin: true }));
