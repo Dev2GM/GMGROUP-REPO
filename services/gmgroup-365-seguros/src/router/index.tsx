@@ -1,8 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
-import Buscador, {loader as BuscadorLoader} from "@/pages/BuscadorGeneral";
-import AltaContacto, {loader as AltaContactoLoader} from "@/pages/AltaContacto";
+import Buscador, { loader as BuscadorLoader } from "@/pages/BuscadorGeneral";
+import AltaContacto, {
+  loader as AltaContactoLoader,
+} from "@/pages/AltaContacto";
 import AltaPoliza from "@/pages/AltaPoliza";
 import Layout from "@/layouts/MainLayout";
 import CalendarInterface from "@/pages/Calendario";
@@ -11,6 +13,7 @@ import PreguntasFrecuentes from "@/pages/PreguntasFrecuentes";
 import Kanban from "@/pages/Kanban";
 import ConocimientoBot from "@/pages/ConocimientoBot";
 import ManualesMateriales from "@/pages/ManualesMateriales";
+import DetallesCliente from "@/pages/DetallesCliente";
 
 export const router = createBrowserRouter([
   {
@@ -28,12 +31,16 @@ export const router = createBrowserRouter([
       {
         path: "buscador",
         element: <Buscador />,
-        loader: BuscadorLoader
+        loader: BuscadorLoader,
       },
       {
         path: "alta-contacto",
         element: <AltaContacto />,
-        loader: AltaContactoLoader
+        loader: AltaContactoLoader,
+      },
+      {
+        path: "detalles-cliente",
+        element: <DetallesCliente />,
       },
       {
         path: "alta-poliza",
@@ -52,21 +59,21 @@ export const router = createBrowserRouter([
         element: <p>CHAT</p>,
       },
       {
-        path: "nucleo_conocimiento",
-        element: <NucleoConocimiento/>,
+        path: "nucleo-conocimiento",
+        element: <NucleoConocimiento />,
       },
       {
         path: "preguntas",
-        element: <PreguntasFrecuentes/>,
+        element: <PreguntasFrecuentes />,
       },
-        {
-          path: "conocimiento_bot",
-          element: <ConocimientoBot/>,
-        },
-        {
-          path: "manuales_materiales",
-          element: <ManualesMateriales/>,
-        },
+      {
+        path: "conocimiento-bot",
+        element: <ConocimientoBot />,
+      },
+      {
+        path: "manuales-materiales",
+        element: <ManualesMateriales />,
+      },
     ],
   },
   {

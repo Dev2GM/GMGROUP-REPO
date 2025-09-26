@@ -20,6 +20,12 @@ const items = [
     icon: <Home size={20} />,
     label: "Inicio",
   },
+  // Quitar este cuando se despliegue
+  {
+    path: "/detalles_cliente",
+    icon: <Home size={20} />,
+    label: "Informacion de cliente",
+  },
   {
     path: "/alta-contacto",
     icon: <UserPlus size={20} />,
