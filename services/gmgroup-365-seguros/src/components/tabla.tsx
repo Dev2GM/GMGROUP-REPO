@@ -5,7 +5,7 @@ function Tabla({ results }: { results: any[] }) {
 
   // Para redirigir a la página de detalles del cliente
   const handleDoubleClick = (person: any) => {
-    navigate(`../paginas/detalles_cliente/${person.id}`, {
+    navigate(`../detalles-cliente/`, {
       state: { clientData: person },
     });
   };
