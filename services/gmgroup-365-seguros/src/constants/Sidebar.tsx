@@ -23,7 +23,7 @@ const items = [
   },
   // Quitar este cuando se despliegue
   {
-    path: "/detalles_cliente",
+    path: "/detalles-cliente",
     icon: <Home size={20} />,
     label: "Informacion de cliente",
   },

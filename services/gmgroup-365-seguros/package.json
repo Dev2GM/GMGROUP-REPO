@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@html2canvas/html2canvas": "^1.6.3",
     "@radix-ui/react-dialog": "^1.1.14",
     "@radix-ui/react-label": "^2.1.7",
     "@radix-ui/react-separator": "^1.1.7",
@@ -22,6 +23,7 @@
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
+    "jspdf": "^3.0.3",
     "lucide-react": "^0.525.0",
     "mysql": "^2.18.1",
     "mysql2": "^3.14.3",
