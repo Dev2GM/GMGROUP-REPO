@@ -254,7 +254,7 @@ export default function ClientDetails() {
           Siniestro
         </Button>
         <Button
-          onClick={() => navigate("/alta_poliza")}
+          onClick={() => navigate("/alta-poliza")}
           variant="default"
           size="default"
           className="rounded-xl"
