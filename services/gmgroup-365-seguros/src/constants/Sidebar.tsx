@@ -58,7 +58,7 @@ const items = [
     label: "Prospección de terceros",
   },
   {
-    path: "/nucleo_conocimiento",
+    path: "/nucleo-conocimiento",
     icon: <MessageCircle size={20} />,
     label: "Núcleo de conocimiento",
   },
